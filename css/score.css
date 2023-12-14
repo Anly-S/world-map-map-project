@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+* {
+  font-family: "Silkscreen", sans-serif;
+  background-color: #252839;
+}
+
+h3 {
+  color: yellow;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.hey {
+  display: flex;
+  flex-direction: row;
+}
+
+.hey h1 {
+  margin-top: 4px;
+  font-size: 40px;
+  animation: rainbowText 4s infinite;
+}
+
+@keyframes rainbowText {
+  0% {
+    color: #ff0000; /* Red */
+  }
+  20% {
+    color: #ffd700; /* Gold */
+  }
+  40% {
+    color: #008000; /* Green */
+  }
+  60% {
+    color: #0000ff; /* Blue */
+  }
+  80% {
+    color: #4b0082; /* Indigo */
+  }
+  100% {
+    color: #ee82ee; /* Violet */
+  }
+}
+
+.hey p {
+  color: yellow;
+  margin-top: 27px;
+  margin-right: 5px; /* Add right margin to create space between p and h2 */
+}
+
+.hey h2 {
+  margin-top: 8px;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden; /* Hide overflow to ensure complete hiding before animation */
+}
+
+.message h2 {
+  margin-top: 45px;
+  opacity: 0; /* Set initial opacity to 0 */
+}
+
+.message p {
+  color: yellow;
+  margin-right: 1px; /* Add right margin to create space between p and h2 */
+  margin-top: 50px;
+}
+
+.message h4 {
+  font-size: 30px;
+  filter: grayscale(50%);
+  color: aquamarine;
+  animation: slideIn 3s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100vw); /* Start from leftmost position */
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.slide-in-element {
+  animation: slideIn 0s ease-out 0s; /* Animation duration: 1s, easing function: ease-out, delay: 0s */
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+}
+
+.score h2 {
+  color: #ee82ee;
+  margin-top: 11px;
+}
+
+.score p {
+  color: yellow;
+}
+
+/* Add this CSS to your score.css file or create a new one */
+
+.restart {
+  background-color: #4caf50; /* Green background color */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Add padding to the button */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px; /* Optional: Add rounded corners */
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+
+  /* Hover effect */
+  .restart:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+
+  /* Game-like pulse effect */
+  animation: pulse 1.5s infinite;
+}
+
+.restart a {
+  color: white; /* Set link text color to white */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
