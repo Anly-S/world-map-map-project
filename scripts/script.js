@@ -1,19 +1,23 @@
+//To store username and number of questions to local storage.
+function storeUserInfo() {
+  let userName = document.getElementById("firstName").value;
+  let numberOfQuestions = document.getElementById("number").value;
+
+  localStorage.setItem("name:", userName);
+  localStorage.setItem("numOfQuestions:", numberOfQuestions);
+}
 let currentQuestionIndex = 0;
 
 
 const updateQuestion = () => {
   const questionElement = document.getElementById("question");
-  questionElement.textContent = QuestionData[currentQuestionIndex].question; // Arrow function to update the question and related content
+  questionElement.textContent = QuestionData[currentQuestionIndex].question; 
+  document.querySelector(".card-text").textContent = ""; 
 
-  document.querySelector(".card-text").textContent = ""; // Clear previous feedback
-
-  document.querySelector('map[name="image-map"]').innerHTML = ""; // Clear previous map areas (you may update this part based on your specific requirements) // Add your map areas dynamically here based on the current question // For example:
-  // document.querySelector('map[name="image-map"]').innerHTML = '<area ...>'
-
-  // Update the link (you may customize this based on your specific requirements)
+  document.querySelector('map[name="image-map"]').innerHTML = ""; 
 
   const nextQuestionLink = document.querySelector(".button-div");
-  nextQuestionLink.href = "#"; // You may update the href based on your navigation logic
+  nextQuestionLink.href = "#"; 
 };
 
 const nextQuestion = () => {
@@ -22,7 +26,6 @@ const nextQuestion = () => {
   if (currentQuestionIndex < QuestionData.length) {
     updateQuestion();
   } else {
-    // Handle end of questions (you may customize this based on your specific requirements)
     alert('Congratulations! You have completed all questions.');
   }
 };
