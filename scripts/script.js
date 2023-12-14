@@ -93,11 +93,49 @@ const enterGame = () => {
   updateQuestion();
 };
 
+let score = 0;
+
+const checkAnswer = (areaName) => {
+  document
+    .querySelector(".card-text")
+    .setAttribute("style", "visibility: visible");
+  if (
+    areaName ===
+    questionsAndAnswers[pickedQuestions[currentQuestionIndex]].answer
+  ) {
+    score++;
+    localStorage.setItem("score", score);
+    document.querySelector(".card-text strong").textContent =
+      "Correct answer!!";
+    document
+      .querySelector(".card-text strong")
+      .setAttribute("style", "color: green");
+  } else {
+    document.querySelector(".card-text strong").textContent = "Wrong answer!!";
+    document
+      .querySelector(".card-text strong")
+      .setAttribute("style", "color: red");
+  }
+  document
+    .getElementById("next-button")
+    .setAttribute("onclick", "nextQuestion()");
+  if (currentQuestionIndex === pickedQuestions.length - 1) {
+    document.getElementById("next-button").textContent = "Finish Quiz";
+    document
+      .getElementById("next-button")
+      .setAttribute("onclick", "finishQuiz()");
+  }
+};
+
+const finishQuiz = () => {
+  console.log(score);
+};
+
 const getArea = (areaName) => {
   console.log(areaName);
   let nextButton = document.getElementById("next-button");
-  nextButton.setAttribute("onclick", "");
   nextButton.setAttribute("style", "opacity: 1; cursor: pointer;");
+  checkAnswer(areaName);
 };
 
 const enableNextQuestion = () => {};
