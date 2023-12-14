@@ -93,4 +93,11 @@ const enterGame = () => {
   updateQuestion();
 };
 
+const getArea = (areaName) => {
+  console.log(areaName);
+  let nextButton = document.getElementById("next-button");
+  nextButton.setAttribute("onclick", "");
+  nextButton.setAttribute("style", "opacity: 1; cursor: pointer;");
+};
+
 const enableNextQuestion = () => {};
