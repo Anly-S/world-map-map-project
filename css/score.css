@@ -96,6 +96,9 @@ h3 {
     opacity: 1;
   }
 }
+.slide-in-element {
+  animation: slideIn 0s ease-out 0s; /* Animation duration: 1s, easing function: ease-out, delay: 0s */
+}
 
 .score {
   display: flex;

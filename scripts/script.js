@@ -5,6 +5,7 @@ function storeUserInfo() {
 
   localStorage.setItem("name", userName);
   localStorage.setItem("numOfQuestions", numberOfQuestions);
+  window.location.href = "study.html";
 }
 
 let questionsAndAnswers = [
@@ -133,7 +134,6 @@ const checkAnswer = (areaName) => {
 const finishQuiz = () => {
   console.log(score);
   window.location.href = "score.html";
-  finishQuiz();
 };
 
 const getArea = (areaName) => {
@@ -153,27 +153,52 @@ const updateQuestionCounter = () => {
 const enableNextQuestion = () => {};
 
 const displayScore = () => {
+  const score = localStorage.getItem("score");
   const usernameDisplay = document.getElementById("usernameDisplay");
   usernameDisplay.textContent = localStorage.getItem("name");
 
   const scoreDisplay = document.getElementById("scoreDisplay");
-  scoreDisplay.textContent = localStorage.getItem("score");
-
+  if (score === null || score === undefined || score === NaN || score === 0) {
+    scoreDisplay.textContent = 0;
+  } else {
+    scoreDisplay.textContent = score;
+  }
   const scoreMessage = document.getElementById("scoreMessage");
 
   // Display score message in the HTML
   const numberOfQuestions = localStorage.getItem("numOfQuestions");
-  if (userInfo.score <= numberOfQuestions / 2) {
+
+  if (score <= numberOfQuestions / 2) {
     scoreMessage.textContent = "Try Harder";
   } else if (
-    userInfo.score > numberOfQuestions / 2 &&
-    userInfo.score <= numberOfQuestions * 0.75
+    score > numberOfQuestions / 2 &&
+    score <= numberOfQuestions * 0.75
   ) {
     scoreMessage.textContent = "Can be better";
-  } else if (
-    userInfo.score >= numberOfQuestions * 0.75 &&
-    userInfo.score <= numberOfQuestions
-  ) {
+  } else if (score >= numberOfQuestions * 0.75 && score <= numberOfQuestions) {
     scoreMessage.textContent = "Hooooooooorayyyyyyyyy!";
   }
+};
+
+const disableStartButton = () => {
+  localStorage.clear();
+  document
+    .getElementById("get_start_button")
+    .setAttribute("style", "opacity: 0.5; cursor: not-allowed;");
+
+  document.getElementById("get_start_button").setAttribute("onclick", "");
+  document.getElementById("firstName").addEventListener("input", (event) => {
+    // The event handler function will be called when the input value changes
+    const inputValue = event.target.value;
+    console.log(inputValue);
+    if (inputValue.length >= 1) {
+      document
+        .getElementById("get_start_button")
+        .setAttribute("style", "opacity: 1; cursor:pointer;");
+
+      document
+        .getElementById("get_start_button")
+        .setAttribute("onclick", "storeUserInfo()");
+    }
+  });
 };
