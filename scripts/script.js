@@ -71,6 +71,7 @@ const updateQuestion = () => {
   let nextButton = document.getElementById("next-button");
   nextButton.setAttribute("onclick", "");
   nextButton.setAttribute("style", "opacity: 0.5; cursor: not-allowed;");
+  updateQuestionCounter();
 
   //   document.querySelector('map[name="image-map"]').innerHTML = "";
 };
@@ -138,6 +139,13 @@ const getArea = (areaName) => {
   let nextButton = document.getElementById("next-button");
   nextButton.setAttribute("style", "opacity: 1; cursor: pointer;");
   checkAnswer(areaName);
+};
+
+//update question counter
+const updateQuestionCounter = () => {
+  let questionCounter = document.querySelector(".question-counter h4");
+  questionCounter.textContent =
+    currentQuestionIndex + 1 + "/" + pickedQuestions.length + " questions";
 };
 
 const enableNextQuestion = () => {};
