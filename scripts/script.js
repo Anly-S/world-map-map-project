@@ -38,12 +38,9 @@ let pickedQuestions = [];
 //function to pick n random questions index values.
 
 const pickRandomQuestions = () => {
-  for (i = 0; i < localStorage.getItem("noOfQuestions"); ) {
-    const random = Math.floor(Math.random() * 10) - 1;
+  for (i = 0; i < localStorage.getItem("numOfQuestions"); ) {
+    const random = Math.floor(Math.random() * 10);
     if (pickedQuestions.includes(random)) {
-      if (i != 0) {
-        i--;
-      }
       continue;
     } else {
       pickedQuestions.push(random);
