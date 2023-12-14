@@ -159,23 +159,23 @@ const displayScore = () => {
 
   const scoreDisplay = document.getElementById("scoreDisplay");
   if (score === null || score === undefined || score === NaN || score === 0) {
-    scoreDisplay.textContent = 0;
+    scoreDisplay.textContent = 0 + "/" + localStorage.getItem("numOfQuestions");
   } else {
-    scoreDisplay.textContent = score;
+    scoreDisplay.textContent =
+      score + " / " + localStorage.getItem("numOfQuestions");
   }
   const scoreMessage = document.getElementById("scoreMessage");
 
   // Display score message in the HTML
   const numberOfQuestions = localStorage.getItem("numOfQuestions");
 
-  if (score <= numberOfQuestions / 2) {
+  const ratio = (score / numberOfQuestions) * 100;
+
+  if (ratio <= 50.0) {
     scoreMessage.textContent = "Try Harder";
-  } else if (
-    score > numberOfQuestions / 2 &&
-    score <= numberOfQuestions * 0.75
-  ) {
+  } else if (ratio > 50.0 && ratio <= 75.0) {
     scoreMessage.textContent = "Can be better";
-  } else if (score >= numberOfQuestions * 0.75 && score <= numberOfQuestions) {
+  } else if (ratio > 75.0 && ratio <= 100.0) {
     scoreMessage.textContent = "Hooooooooorayyyyyyyyy!";
   }
 };
@@ -199,6 +199,11 @@ const disableStartButton = () => {
       document
         .getElementById("get_start_button")
         .setAttribute("onclick", "storeUserInfo()");
+    } else {
+      document
+        .getElementById("get_start_button")
+        .setAttribute("style", "opacity: 0.5; cursor: not-allowed;");
+      document.getElementById("get_start_button").setAttribute("onclick", "");
     }
   });
 };

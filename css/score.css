@@ -107,11 +107,13 @@ h3 {
 
 .score h2 {
   color: #ee82ee;
-  margin-top: 11px;
+  margin-top: 25px;
+  font-size: 35px;
 }
 
 .score p {
   color: yellow;
+  font-size: 30px;
 }
 
 /* Add this CSS to your score.css file or create a new one */
