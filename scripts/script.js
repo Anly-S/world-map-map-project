@@ -3,10 +3,9 @@ function storeUserInfo() {
   let userName = document.getElementById("firstName").value;
   let numberOfQuestions = document.getElementById("number").value;
 
-  localStorage.setItem("name:", userName);
-  localStorage.setItem("numOfQuestions:", numberOfQuestions);
+  localStorage.setItem("name", userName);
+  localStorage.setItem("numOfQuestions", numberOfQuestions);
 }
-
 
 let questionsAndAnswers = [
   { question: "Which continent is India part of?", answer: "Asia" },
@@ -61,26 +60,37 @@ const pickRandomQuestions = () => {
 
 let currentQuestionIndex = 0;
 
-
 const updateQuestion = () => {
   const questionElement = document.getElementById("question");
-  questionElement.textContent = QuestionData[currentQuestionIndex].question; 
-  document.querySelector(".card-text").textContent = ""; 
+  questionElement.textContent =
+    questionsAndAnswers[pickedQuestions[currentQuestionIndex]].question;
+  document
+    .querySelector(".card-text")
+    .setAttribute("style", "visibility: hidden");
 
-  document.querySelector('map[name="image-map"]').innerHTML = ""; 
+  let nextButton = document.getElementById("next-button");
+  nextButton.setAttribute("onclick", "");
+  nextButton.setAttribute("style", "opacity: 0.5; cursor: not-allowed;");
 
-  const nextQuestionLink = document.querySelector(".button-div");
-  nextQuestionLink.href = "#"; 
+  //   document.querySelector('map[name="image-map"]').innerHTML = "";
 };
 
 const nextQuestion = () => {
   currentQuestionIndex++;
 
-  if (currentQuestionIndex < QuestionData.length) {
+  if (currentQuestionIndex < pickedQuestions.length) {
     updateQuestion();
   } else {
-    alert('Congratulations! You have completed all questions.');
+    alert("Congratulations! You have completed all questions.");
   }
 };
 
-updateQuestion();
+// updateQuestion();
+
+const enterGame = () => {
+  pickRandomQuestions();
+  console.log(pickedQuestions);
+  updateQuestion();
+};
+
+const enableNextQuestion = () => {};

@@ -8,15 +8,18 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <script src="./scripts/script.js"></script>
   </head>
 
-  <body>
+  <body onload="enterGame()">
     <div class="container py-5">
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <div class="card text-center">
             <div class="card-body">
-              <h2 class="card-title mb-4" id="question">Which is the largest continent?</h2>
+              <h2 class="card-title mb-4" id="question">
+                Which is the largest continent?
+              </h2>
               <p class="card-text text-success mb-4">
                 <strong>Correct!</strong>
               </p>
@@ -80,7 +83,9 @@
                   />
                 </map>
               </div>
-              <a href="#" class="btn btn-primary button-div">Next Question</a>
+              <a class="btn btn-primary button-div" id="next-button"
+                >Next Question</a
+              >
             </div>
           </div>
         </div>
