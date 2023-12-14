@@ -7,6 +7,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
+  overflow: hidden;
 }
 
 * {
@@ -83,7 +84,7 @@ h3 {
   font-size: 30px;
   filter: grayscale(50%);
   color: aquamarine;
-  animation: slideIn 3s ease-in-out forwards;
+  animation: slideIn 2s ease-in-out forwards, stay 4s forwards;
 }
 
 @keyframes slideIn {
@@ -96,8 +97,14 @@ h3 {
     opacity: 1;
   }
 }
-.slide-in-element {
-  animation: slideIn 0s ease-out 0s; /* Animation duration: 1s, easing function: ease-out, delay: 0s */
+
+@keyframes stay {
+  from {
+    /* No change in style */
+  }
+  to {
+    /* No change in style */
+  }
 }
 
 .score {
@@ -116,7 +123,7 @@ h3 {
 
 /* Add this CSS to your score.css file or create a new one */
 
-.restart {
+.btn-success {
   background-color: #4caf50; /* Green background color */
   color: white; /* White text color */
   border: none; /* Remove border */
@@ -128,15 +135,10 @@ h3 {
   cursor: pointer;
   border-radius: 5px; /* Optional: Add rounded corners */
   transition: background-color 0.3s ease; /* Add a smooth transition effect */
-
-  /* Hover effect */
-  .restart:hover {
-    background-color: #45a049; /* Darker green on hover */
-  }
-
-  /* Game-like pulse effect */
-  animation: pulse 1.5s infinite;
+  animation: pulse 1s infinite;
 }
+
+/* Game-like pulse effect */
 
 .restart a {
   color: white; /* Set link text color to white */
@@ -153,4 +155,19 @@ h3 {
   100% {
     transform: scale(1);
   }
+}
+
+.img1 {
+  width: 400px;
+  margin-left: 1015px;
+  position: absolute;
+  bottom: -45px;
+}
+
+.img2 {
+  position: absolute;
+  width: 400px;
+  left: -82px;
+  bottom: -45px;
+  transform: scaleX(-1);
 }
