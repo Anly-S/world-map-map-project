@@ -7,6 +7,7 @@ function storeUserInfo() {
   localStorage.setItem("numOfQuestions:", numberOfQuestions);
 }
 
+
 let questionsAndAnswers = [
   { question: "Which continent is India part of?", answer: "Asia" },
   { question: "Which is the largest continent in area?", answer: "Asia" },
@@ -57,3 +58,29 @@ const pickRandomQuestions = () => {
     }
   }
 };
+
+let currentQuestionIndex = 0;
+
+
+const updateQuestion = () => {
+  const questionElement = document.getElementById("question");
+  questionElement.textContent = QuestionData[currentQuestionIndex].question; 
+  document.querySelector(".card-text").textContent = ""; 
+
+  document.querySelector('map[name="image-map"]').innerHTML = ""; 
+
+  const nextQuestionLink = document.querySelector(".button-div");
+  nextQuestionLink.href = "#"; 
+};
+
+const nextQuestion = () => {
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < QuestionData.length) {
+    updateQuestion();
+  } else {
+    alert('Congratulations! You have completed all questions.');
+  }
+};
+
+updateQuestion();
