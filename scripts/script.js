@@ -111,7 +111,9 @@ const checkAnswer = (areaName) => {
       .querySelector(".card-text strong")
       .setAttribute("style", "color: green");
   } else {
-    document.querySelector(".card-text strong").textContent = "Wrong answer!!";
+    rightanswer = questionsAndAnswers[pickedQuestions[currentQuestionIndex]];
+    document.querySelector(".card-text strong").textContent =
+      "Wrong answer!! right answer is " + rightanswer.answer;
     document
       .querySelector(".card-text strong")
       .setAttribute("style", "color: red");
