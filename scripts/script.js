@@ -93,6 +93,7 @@ const enterGame = () => {
   pickRandomQuestions();
   console.log(pickedQuestions);
   updateQuestion();
+  timer();
 };
 
 let score = 0;
@@ -206,4 +207,19 @@ const disableStartButton = () => {
       document.getElementById("get_start_button").setAttribute("onclick", "");
     }
   });
+};
+
+const timer = () => {
+  let timeleft = 5 * localStorage.getItem("numOfQuestions");
+  let downloadTimer = setInterval(function () {
+    console.log(timeleft);
+    if (timeleft <= 0) {
+      clearInterval(downloadTimer);
+      document.getElementById("countdown").innerHTML = "Done";
+      window.location.href = "score.html";
+    } else {
+      document.getElementById("countdown").innerHTML = timeleft + " sec";
+    }
+    timeleft -= 1;
+  }, 1000);
 };

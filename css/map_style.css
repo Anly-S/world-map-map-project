@@ -6,6 +6,13 @@ body {
   background-color: #f4f4f4;
 }
 
+#countid {
+  position: absolute;
+  margin-left: 24%;
+  margin-top: 1%;
+  font-size: xx-large;
+}
+
 .card {
   box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
   border: none;
