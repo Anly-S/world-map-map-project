@@ -8,6 +8,7 @@ function storeUserInfo() {
   window.location.href = "study.html";
 }
 
+//arrary containing all the questions and answers
 let questionsAndAnswers = [
   { question: "Which continent is India part of?", answer: "Asia" },
   { question: "Which is the largest continent in area?", answer: "Asia" },
@@ -46,7 +47,6 @@ let questionsAndAnswers = [
 let pickedQuestions = [];
 
 //function to pick n random questions index values.
-
 const pickRandomQuestions = () => {
   for (i = 0; i < localStorage.getItem("numOfQuestions"); ) {
     const random = Math.floor(Math.random() * 10);
@@ -61,6 +61,7 @@ const pickRandomQuestions = () => {
 
 let currentQuestionIndex = 0;
 
+//function to change the question in the html
 const updateQuestion = () => {
   const questionElement = document.getElementById("question");
   questionElement.textContent =
@@ -77,6 +78,7 @@ const updateQuestion = () => {
   //   document.querySelector('map[name="image-map"]').innerHTML = "";
 };
 
+//function to move to next question
 const nextQuestion = () => {
   currentQuestionIndex++;
 
@@ -87,8 +89,7 @@ const nextQuestion = () => {
   }
 };
 
-// updateQuestion();
-
+// Function to initialize the game by picking random questions and updating the UI
 const enterGame = () => {
   pickRandomQuestions();
   console.log(pickedQuestions);
@@ -148,11 +149,13 @@ const checkAnswer = (areaName) => {
   }
 };
 
+//function to finish quiz and move to score.html page
 const finishQuiz = () => {
   console.log(score);
   window.location.href = "score.html";
 };
 
+// Function to get the clicked area and check the answer
 const getArea = (areaName) => {
   console.log(areaName);
   let nextButton = document.getElementById("next-button");
@@ -160,15 +163,14 @@ const getArea = (areaName) => {
   checkAnswer(areaName);
 };
 
-//update question counter
+// Function to update the question counter in the UI
 const updateQuestionCounter = () => {
   let questionCounter = document.querySelector(".question-counter h4");
   questionCounter.textContent =
     currentQuestionIndex + 1 + "/" + pickedQuestions.length + " questions";
 };
 
-const enableNextQuestion = () => {};
-
+// Function to display the user's score and feedback
 const displayScore = () => {
   const score = localStorage.getItem("score");
   const usernameDisplay = document.getElementById("usernameDisplay");
@@ -197,6 +199,7 @@ const displayScore = () => {
   }
 };
 
+// Function to disable the start button until a username is entered
 const disableStartButton = () => {
   localStorage.clear();
   document
@@ -225,6 +228,7 @@ const disableStartButton = () => {
   });
 };
 
+// Function to set up a countdown timer for the quiz
 const timer = () => {
   let timeleft = 5 * localStorage.getItem("numOfQuestions");
   let downloadTimer = setInterval(function () {
