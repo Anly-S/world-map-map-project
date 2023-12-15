@@ -8,6 +8,13 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <audio id="correctSound" src="./sounds/right.mp3" type="audio/mpeg"></audio>
+    <audio
+      id="incorrectSound"
+      src="./sounds/wrong.mp3"
+      type="audio/mpeg"
+    ></audio>
+
     <script src="./scripts/script.js"></script>
   </head>
 
@@ -19,7 +26,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <div class="card text-center">
-            <div class="question-counter"><h4>1/5 questions</h4></div>
+            <div class="question-counter"><h4></h4></div>
             <div class="card-body">
               <h2 class="card-title mb-4" id="question">
                 Which is the largest continent?
@@ -92,15 +99,15 @@
                     shape="poly"
                   />
                 </map>
+                <div id="countid" class="col">
+                  <div style="color: red" id="countdown"></div>
+                </div>
               </div>
               <a class="btn btn-primary button-div" id="next-button"
                 >Next Question</a
               >
             </div>
           </div>
-        </div>
-        <div id="countid" class="col">
-          <div style="color: red" id="countdown"></div>
         </div>
       </div>
     </div>
