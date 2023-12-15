@@ -98,29 +98,45 @@ const enterGame = () => {
 
 let score = 0;
 
+// Get references to the audio elements
+const correctSound = document.getElementById("correctSound");
+const incorrectSound = document.getElementById("incorrectSound");
+
 const checkAnswer = (areaName) => {
   document
     .querySelector(".card-text")
     .setAttribute("style", "visibility: visible");
+
   if (
     areaName ===
     questionsAndAnswers[pickedQuestions[currentQuestionIndex]].answer
   ) {
+    // Correct answer
     score++;
     localStorage.setItem("score", score);
+
+    // Play correct sound
+    correctSound.play();
+
     document.querySelector(".card-text strong").textContent =
       "Correct answer!!";
     document
       .querySelector(".card-text strong")
       .setAttribute("style", "color: green");
   } else {
+    // Incorrect answer
     rightanswer = questionsAndAnswers[pickedQuestions[currentQuestionIndex]];
+
+    // Play incorrect sound
+    incorrectSound.play();
+
     document.querySelector(".card-text strong").textContent =
       "Wrong answer!! right answer is " + rightanswer.answer;
     document
       .querySelector(".card-text strong")
       .setAttribute("style", "color: red");
   }
+
   document
     .getElementById("next-button")
     .setAttribute("onclick", "nextQuestion()");
